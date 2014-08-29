@@ -18,7 +18,10 @@ flop=/mnt/inst/oel/oel510fdd.img
 cd ~
 
 VBoxManage createvm --name "$vm" --register --ostype Oracle_64
-VBoxManage modifyvm "$vm" --memory "4096" --vram 16 --acpi on --rtcuseutc on --boot1 dvd --nic1 bridged --macaddress1 bc5ff45b8eac --bridgeadapter1 eth0
+VBoxManage modifyvm "$vm" --memory "4096" --vram 16 --acpi on --rtcuseutc on
+--boot1 dvd \
+  --nic1 bridged --macaddress1 bc5ff45b8eac --bridgeadapter1 eth0 \
+  --nic2 bridged --macaddress2 bc5ff45b8ead --bridgeadapter2 eth1
 VBoxManage createhd --filename "$vmstore/$vm/${vm}_root.vdi" --size 65000
 VBoxManage createhd --filename "$vmstore/$vm/${vm}_flash.vdi" --size 10000
 VBoxManage storagectl "$vm" --name "IDE Controller" --add ide --controller PIIX4
